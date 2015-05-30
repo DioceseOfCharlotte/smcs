@@ -44,3 +44,16 @@ function smcs_secondary_color( $hex ) {
 function smcs_accent_color( $hex ) {
     return $hex ? $hex : 'f5f5f5';
 }
+
+
+// Register User Contact Methods
+function meh_user_phone( $user_contact_method ) {
+
+    $user_contact_method['doc_primary_phone'] = __( 'Primary Phone or Extension', 'bempress' );
+
+    return $user_contact_method;
+
+}
+
+// Hook into the 'user_contactmethods' filter
+add_filter( 'user_contactmethods', 'meh_user_phone' );

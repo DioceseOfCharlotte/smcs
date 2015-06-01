@@ -11,13 +11,17 @@ get_header(); ?>
 
     <?php tha_content_before(); ?>
 
-        <div <?php hybrid_attr( 'site-inner' ); ?>>
-
     <main <?php hybrid_attr( 'content' ); ?>>
 
         <?php tha_content_top(); ?>
 
-        <?php if ( have_posts() ) : ?>
+        <?php if ( have_posts() ) : ?>    
+
+        <?php echo do_shortcode( '[slider type="slider" group="front" order="DESC" orderby="name" limit="-1"]' ); ?>
+
+        <section class="row t-bg__1 u-pt@respond">
+            <?php hybrid_get_sidebar( 'front' ); ?>
+        </section>
 
             <?php while ( have_posts() ) : the_post(); ?>
 

@@ -7,6 +7,8 @@
 
 add_action( 'after_setup_theme', 'smcs_theme_setup' );
 
+add_action( 'widgets_init', 'smcs_register_sidebars', 5 );
+
 /**
  * Setup function.
  */
@@ -57,3 +59,15 @@ function meh_user_phone( $user_contact_method ) {
 
 // Hook into the 'user_contactmethods' filter
 add_filter( 'user_contactmethods', 'meh_user_phone' );
+
+
+function smcs_register_sidebars() {
+    hybrid_register_sidebar( [
+        'id'            => 'front',
+        'name'          => _x( 'Front Page Highlights', 'sidebar', 'bempress' ),
+        'before_widget' => '<section id="%1$s" class="widget widget-front %2$s u-flexed--1 u-ph u-mb@respond grid__item u-flex"><div class="u-br u-oh widget__wrap t-bg__1--dark">',
+        'after_widget'  => '</div></section>',
+        'before_title'  => '<h3 class="widget-title widget-footer__title">',
+        'after_title'   => '</h3>',
+    ] );
+}

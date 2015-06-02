@@ -19,18 +19,6 @@ get_header(); ?>
 
         <?php echo do_shortcode( '[slider type="slider" group="front" order="DESC" orderby="name" limit="-1"]' ); ?>
 
-        <section class="row t-bg__1 u-pt@respond">
-            <?php hybrid_get_sidebar( 'front' ); ?>
-        </section>
-
-        <section class="row page-highlight t-bg__3">
-        <?php get_template_part( 'templates/showcase', 'page' ); ?>
-        </section>
-
-        <section class="row pages-highlight t-bg__3">
-        <?php get_template_part( 'templates/showcase', 'pages' ); ?>
-        </section>
-
             <?php while ( have_posts() ) : the_post(); ?>
 
                 <?php tha_entry_before(); ?>
@@ -40,6 +28,16 @@ get_header(); ?>
                 <?php tha_entry_after(); ?>
 
             <?php endwhile; ?>
+
+            <?php hybrid_get_sidebar( 'front' ); ?>
+
+        <section class="row page-highlight t-bg__3">
+        <?php get_template_part( 'templates/showcase', 'page' ); ?>
+        </section>
+
+        <section class="row pages-highlight t-bg__3">
+        <?php get_template_part( 'templates/showcase', 'pages' ); ?>
+        </section>
 
         <?php else : ?>
 

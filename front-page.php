@@ -31,13 +31,9 @@ get_header(); ?>
 
             <?php hybrid_get_sidebar( 'front' ); ?>
 
-        <section class="row page-highlight t-bg__3">
         <?php get_template_part( 'templates/showcase', 'page' ); ?>
-        </section>
 
-        <section class="row pages-highlight t-bg__3">
         <?php get_template_part( 'templates/showcase', 'pages' ); ?>
-        </section>
 
         <?php else : ?>
 

@@ -23,6 +23,14 @@ get_header(); ?>
             <?php hybrid_get_sidebar( 'front' ); ?>
         </section>
 
+        <section class="row page-highlight t-bg__3">
+        <?php get_template_part( 'templates/showcase', 'page' ); ?>
+        </section>
+
+        <section class="row pages-highlight t-bg__3">
+        <?php get_template_part( 'templates/showcase', 'pages' ); ?>
+        </section>
+
             <?php while ( have_posts() ) : the_post(); ?>
 
                 <?php tha_entry_before(); ?>

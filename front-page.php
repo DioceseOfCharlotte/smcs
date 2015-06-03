@@ -29,11 +29,11 @@ get_header(); ?>
 
             <?php endwhile; ?>
 
+        <?php get_template_part( 'templates/showcase', 'pages' ); ?>
+
             <?php hybrid_get_sidebar( 'front' ); ?>
 
         <?php get_template_part( 'templates/showcase', 'page' ); ?>
-
-        <?php get_template_part( 'templates/showcase', 'pages' ); ?>
 
         <?php else : ?>
 

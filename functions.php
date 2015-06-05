@@ -71,3 +71,52 @@ function smcs_register_sidebars() {
         'after_title'   => '</h3>',
     ] );
 }
+
+// Hook into the 'user_contactmethods' filter
+add_filter( 'user_contactmethods', 'meh_user_phone' );
+
+
+function smcs_register_sidebars() {
+    hybrid_register_sidebar( [
+        'id'            => 'front',
+        'name'          => _x( 'Front Page Highlights', 'sidebar', 'bempress' ),
+        'before_widget' => '<section id="%1$s" class="widget widget-front %2$s u-flexed--1 u-ph u-mb@respond grid__item u-flex"><div class="u-br u-oh widget__wrap t-bg__1--dark">',
+        'after_widget'  => '</div></section>',
+        'before_title'  => '<h3 class="widget-title widget-footer__title">',
+        'after_title'   => '</h3>',
+    ] );
+}
+
+
+add_action( 'cmb2_init', 'smcs_register_user_profile_metabox' );
+
+
+/**
+ * Hook in and add a metabox to add fields to the user profile pages
+ */
+function smcs_register_user_profile_metabox() {
+	// Start with an underscore to hide fields from custom fields list
+	$prefix = '_smcs_user_';
+	/**
+	 * Metabox for the user profile screen
+	 */
+	$cmb_user = new_cmb2_box( array(
+		'id'               => $prefix . 'staff_position',
+		'title'            => __( 'Position', 'cmb2' ),
+		'object_types'     => array( 'user' ), // Tells CMB2 to use user_meta vs post_meta
+		'show_names'       => true,
+		'new_user_section' => 'add-existing-user', // where form will show on new user page. 'add-existing-user' is only other valid option.
+	) );
+	$cmb_user->add_field( array(
+		'name'     => __( 'Position Details', 'cmb2' ),
+		'id'       => $prefix . 'position_details',
+		'type'     => 'title',
+		'on_front' => false,
+	) );
+	
+	$cmb_user->add_field( array(
+		'name' => __( 'Title, Class or Grade', 'cmb2' ),
+		'id'   => $prefix . 'staff_title',
+		'type' => 'text',
+	) );
+}

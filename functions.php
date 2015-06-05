@@ -6,8 +6,10 @@
  */
 
 add_action( 'after_setup_theme', 'smcs_theme_setup' );
+add_action( 'widgets_init', 'smcs_register_sidebars' );
+add_filter( 'user_contactmethods', 'smcs_user_contact_methods' );
+add_action( 'cmb2_init', 'smcs_register_user_profile_metabox' );
 
-add_action( 'widgets_init', 'smcs_register_sidebars', 5 );
 
 /**
  * Setup function.
@@ -48,18 +50,20 @@ function smcs_accent_color( $hex ) {
 }
 
 
-// Register User Contact Methods
-function meh_user_phone( $user_contact_method ) {
+// User Contact Methods
+function smcs_user_contact_methods( $user_contact_method ) {
 
-    $user_contact_method['doc_primary_phone'] = __( 'Primary Phone or Extension', 'bempress' );
+    $user_contact_method['doc_primary_phone'] = __( 'Phone (or extension)', 'smcs' );
+    
+    	// Remove user contact methods
+	unset( $user_contact['aim']    );
+	unset( $user_contact['jabber'] );
+	unset( $user_contact['yim'] );
 
     return $user_contact_method;
 
 }
 
-// Hook into the 'user_contactmethods' filter
-add_filter( 'user_contactmethods', 'meh_user_phone' );
-
 
 function smcs_register_sidebars() {
     hybrid_register_sidebar( [
@@ -71,24 +75,6 @@ function smcs_register_sidebars() {
         'after_title'   => '</h3>',
     ] );
 }
-
-// Hook into the 'user_contactmethods' filter
-add_filter( 'user_contactmethods', 'meh_user_phone' );
-
-
-function smcs_register_sidebars() {
-    hybrid_register_sidebar( [
-        'id'            => 'front',
-        'name'          => _x( 'Front Page Highlights', 'sidebar', 'bempress' ),
-        'before_widget' => '<section id="%1$s" class="widget widget-front %2$s u-flexed--1 u-ph u-mb@respond grid__item u-flex"><div class="u-br u-oh widget__wrap t-bg__1--dark">',
-        'after_widget'  => '</div></section>',
-        'before_title'  => '<h3 class="widget-title widget-footer__title">',
-        'after_title'   => '</h3>',
-    ] );
-}
-
-
-add_action( 'cmb2_init', 'smcs_register_user_profile_metabox' );
 
 
 /**

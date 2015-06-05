@@ -56,9 +56,9 @@ function smcs_user_contact_methods( $user_contact_method ) {
     $user_contact_method['doc_primary_phone'] = __( 'Phone (or extension)', 'smcs' );
     
     	// Remove user contact methods
-	unset( $user_contact['aim']    );
-	unset( $user_contact['jabber'] );
-	unset( $user_contact['yim'] );
+	unset( $user_contact_method['aim']    );
+	unset( $user_contact_method['jabber'] );
+	unset( $user_contact_method['yim'] );
 
     return $user_contact_method;
 

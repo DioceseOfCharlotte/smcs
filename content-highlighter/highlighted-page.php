@@ -33,9 +33,9 @@ endif;
 
 			<?php $title = get_the_title() ? get_the_title() : __( '(no title)', 'content-highlighter' ); ?>
 
-			<h2 class="block__title u-mtn+">
+			<div class="block__title">
 				<a href="<?php the_permalink(); ?>"><?php echo esc_html( $title ) ?></a>
-			</h2>
+			</div>
 
 	<?php endif; ?>
 

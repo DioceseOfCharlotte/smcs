@@ -17,7 +17,7 @@ get_header(); ?>
 
         <?php if ( have_posts() ) : ?>    
 
-        <?php echo do_shortcode( '[slider type="slider" group="front" order="DESC" orderby="name" limit="-1"]' ); ?>
+        <?php echo do_shortcode( '[slider type="slider" group="front" order="DESC" orderby="rand" limit="-1"]' ); ?>
 
             <?php while ( have_posts() ) : the_post(); ?>
 

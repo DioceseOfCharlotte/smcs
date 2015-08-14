@@ -8,6 +8,7 @@
 $includes_dir = trailingslashit( get_stylesheet_directory() );
 
 require_once $includes_dir . 'inc/user-tax.php';
+require_once $includes_dir . 'inc/post-types.php';
 require_once $includes_dir . 'inc/log-in-form.php';
 
 add_action( 'after_setup_theme', 'smcs_theme_setup' );

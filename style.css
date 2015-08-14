@@ -6,9 +6,143 @@
  * Author:      Marty Helmick
  * Author URI:  https://github.com/m-e-h
  * Text Domain: smcs
- * Tags:        
+ * Tags:
  * Domain Path: /languages/
  * License:     GNU General Public License v2.0 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Template:    bempress
  */
+
+.svg-logo {
+    width: 100%;
+}
+
+.panel {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    text-align: center;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+    -webkit-transform: translateY(-100%);
+    -ms-transform: translateY(-100%);
+    transform: translateY(-100%);
+}
+.panel.is-visible {
+    visibility: visible;
+    position: relative;
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 3px 3px -2px rgba(0, 0, 0, 0.2), 0 1px 8px 0 rgba(0, 0, 0, 0.12);
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+}
+
+.panel-btn {
+    position: absolute;
+    z-index: 1011;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    margin: .5rem;
+    border-radius: 50%;
+    color: white;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+}
+.panel-btn.is-active {
+    margin-top: -50px;
+    color: #0074d9;
+}
+
+.logged-in .panel-btn.is-active {
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.panel #loginform {
+    max-width: 800px;
+    margin: 0 auto;
+        position: static;
+}
+
+.login-username {
+    display: inline-block;
+    width: 100%;
+}
+@media screen and (min-width: 52em) {
+    .login-username {
+        width: 40%;
+    }
+}
+.login-username label {
+    display: none;
+}
+
+.login-password {
+    display: inline-block;
+    width: 100%;
+}
+@media screen and (min-width: 52em) {
+    .login-password {
+        width: 40%;
+    }
+}
+.login-password label {
+    display: none;
+}
+
+.login-remember {
+    display: inline-block;
+    font-size: 14px;
+    font-size: 0.875rem;
+    line-height: 1.07143;
+}
+@media screen and (min-width: 52em) {
+    .login-remember {
+        position: absolute;
+        bottom: 0;
+        //left: 0;
+    }
+}
+
+.login-submit {
+    display: inline-block;
+    text-align: left;
+    vertical-align: top;
+}
+@media screen and (min-width: 52em) {
+    .login-submit {
+        width: 14%;
+    }
+}
+
+.favorites-list > li {
+    display: block;
+}
+
+.simplefavorite-button {
+    color: #0059a6;
+}
+
+.simplefavorite-button.active {
+    color: white;
+    background-color: #0d8eff;
+}
+
+.user-account {
+    top: 5px;
+    left: 0;
+}
+
+.panel .avatar {
+    border-radius: 50%;
+}
+
+.menu-logged-in {
+    margin-right: 60px;
+    margin-left: 60px;
+}

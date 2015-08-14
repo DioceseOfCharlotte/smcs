@@ -8,6 +8,7 @@
 $includes_dir = trailingslashit( get_stylesheet_directory() );
 
 require_once $includes_dir . 'inc/user-tax.php';
+require_once $includes_dir . 'inc/log-in-form.php';
 
 add_action( 'after_setup_theme', 'smcs_theme_setup' );
 add_action( 'widgets_init', 'smcs_register_sidebars' );
@@ -58,7 +59,7 @@ function smcs_accent_color( $hex ) {
 function smcs_user_contact_methods( $user_contact_method ) {
 
     $user_contact_method['doc_primary_phone'] = __( 'Phone (or extension)', 'smcs' );
-    
+
     	// Remove user contact methods
 	unset( $user_contact_method['aim']    );
 	unset( $user_contact_method['jabber'] );
@@ -103,7 +104,7 @@ function smcs_register_user_profile_metabox() {
 		'type'     => 'title',
 		'on_front' => false,
 	) );
-	
+
 	$cmb_user->add_field( array(
 		'name' => __( 'Title, Class or Grade', 'cmb2' ),
 		'id'   => $prefix . 'staff_title',
@@ -163,4 +164,12 @@ function smcs_affiliates() {
         </a>
     </div>
     <?php
+}
+
+
+add_action( 'tha_content_top', 'bempress_meh_slider');
+function bempress_meh_slider() {
+    if ( is_front_page() ) {
+    echo do_shortcode( '[slider type="slider" group="front" order="DESC" orderby="rand" limit="-1"]' );
+    }
 }

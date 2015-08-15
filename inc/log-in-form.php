@@ -28,7 +28,7 @@ ob_start();
             ?>
         <div class="user-account absolute" title="Logged in as <?php echo $current_user->display_name; ?>">
             <?php
-    		echo get_avatar( $current_user, 30 ). '<p class="grid__item"><a class="btn small" href="'. wp_logout_url() .'">Sign Out</a></p>';
+    		echo get_avatar( $current_user, 30 ). '<p class="grid__item"><a class="btn small" href="'. wp_logout_url( home_url() ) .'">Sign Out</a></p>';
             ?>
         </div>
             <?php

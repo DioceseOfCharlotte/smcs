@@ -163,3 +163,11 @@
 .thumbnail {
     width: 100%;
 }
+
+.has-dropdown > .menu-link:after {
+    content: " +";
+}
+
+.has-dropdown > .menu-link.is-active:after {
+    content: " -";
+}

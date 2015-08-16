@@ -150,7 +150,7 @@
 
 
 @media screen and (min-width: 52em) {
-.pages-highlight:first-of-type {
+.home .pages-highlight:first-of-type {
     padding-top: 0;
 }
 

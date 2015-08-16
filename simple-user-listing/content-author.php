@@ -18,8 +18,8 @@ $num_posts = count_user_posts( $user->ID );
 	<div class="media__img grid__item u-width-auto@md">
 		<?php echo get_avatar( $user->ID, 90 ); ?>
 	</div>
-	<div class="media__body flex-auto grid__item p1">
-		<div class="media__title">
+	<div class="media__body flex-auto grid__item p1 u-width-auto@md">
+		<div class="media__title caps bold">
 			<?php echo $user_info->display_name; ?>
 		</div>
         <div class="media__text user__title"><?php echo $user_info->_smcs_user_staff_title; ?></div>

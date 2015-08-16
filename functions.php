@@ -10,6 +10,7 @@ $includes_dir = trailingslashit( get_stylesheet_directory() );
 require_once $includes_dir . 'inc/user-tax.php';
 require_once $includes_dir . 'inc/post-types.php';
 require_once $includes_dir . 'inc/log-in-form.php';
+require_once $includes_dir . 'inc/forms.php';
 
 add_action( 'after_setup_theme', 'smcs_theme_setup' );
 add_action( 'widgets_init', 'smcs_register_sidebars' );

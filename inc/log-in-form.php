@@ -27,9 +27,9 @@ ob_start();
             $post_link = get_permalink($post_id);
             ?>
         <div class="user-account absolute" title="Logged in as <?php echo $current_user->display_name; ?>">
-            <?php
-    		echo get_avatar( $current_user, 30 ). '<p class="grid__item"><a class="btn small" href="<?php echo wp_logout_url( home_url() ); ?>">Sign Out</a></p>';
-            ?>
+            <?php echo get_avatar( $current_user, 30 ); ?>
+        <p class="grid__item"><a class="btn small" href="<?php echo wp_logout_url( home_url() ); ?>">Sign Out</a></p>
+
         </div>
             <?php
             if (class_exists('SimpleFavorites')) { ?>

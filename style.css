@@ -163,3 +163,15 @@
 .thumbnail {
     width: 100%;
 }
+
+
+.post-9 .card-row > .h1 {
+	font-size: 18px;
+	text-align: left;
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+.meh-slider .meh-slider__text {
+	display: none;
+}

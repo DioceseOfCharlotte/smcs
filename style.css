@@ -171,3 +171,7 @@
 .has-dropdown > .menu-link.is-active:after {
     content: " –";
 }
+
+.card-img img {
+    max-height: 220px;
+}

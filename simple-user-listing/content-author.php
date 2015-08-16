@@ -15,10 +15,10 @@ $num_posts = count_user_posts( $user->ID );
 ?>
 <div class="media-wrap grid__item u-1/1 u-1/2@md u-1/3@lg p1">
 <div id="user-<?php echo $user->ID; ?>" class="media media-author shadow2 grid bg-1--light white flex flex-wrap">
-	<div class="media__img grid__item u-width-auto@md">
+	<div class="media__img grid__item u-width-auto">
 		<?php echo get_avatar( $user->ID, 90 ); ?>
 	</div>
-	<div class="media__body flex-auto grid__item p1 u-width-auto@md">
+	<div class="media__body flex-auto grid__item p1 u-width-auto">
 		<div class="media__title caps bold">
 			<?php echo $user_info->display_name; ?>
 		</div>

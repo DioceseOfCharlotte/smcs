@@ -169,5 +169,5 @@
 }
 
 .has-dropdown > .menu-link.is-active:after {
-    content: " -";
+    content: " –";
 }

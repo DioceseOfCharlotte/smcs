@@ -1,6 +1,7 @@
 <?php
 
 add_action( 'init', 'smcs_students_post_type' );
+add_action( 'cmb2_init', 'smcs_grade_register_metabox' );
 
 // Register Students Post Type
 function smcs_students_post_type() {
@@ -27,7 +28,6 @@ function smcs_students_post_type() {
 				'title',
 				'author',
 				'revisions',
-				'custom-fields',
 				'page-attributes',
 			),
 
@@ -50,7 +50,34 @@ function smcs_students_post_type() {
 			)
 		)
 	);
+}
 
 
+function smcs_grade_register_metabox() {
 
+$prefix = 'smcs_';
+
+	$smcs_student = new_cmb2_box( array(
+		'id'            => $prefix . 'grade',
+		'title'         => __( 'Student Info', 'smcs' ),
+		'object_types'  => array( 'smcs_student', ), // Post type
+	) );
+	$smcs_student->add_field( array(
+		'name'             => __( 'Grade', 'cmb2' ),
+		'desc'             => __( 'field description (optional)', 'cmb2' ),
+		'id'               => $prefix . 'grade',
+		'type'             => 'select',
+		'show_option_none' => false,
+		'options'          => array(
+			'kindergarten' => __( 'kindergarten', 'cmb2' ),
+			'1st'   		=> __( '1st', 'cmb2' ),
+			'2nd'     => __( '2nd', 'cmb2' ),
+			'3rd'   		=> __( '3rd', 'cmb2' ),
+			'4th'     => __( '4th', 'cmb2' ),
+			'5th'   		=> __( '5th', 'cmb2' ),
+			'6th'     => __( '6th', 'cmb2' ),
+			'7th'   		=> __( '7th', 'cmb2' ),
+			'8th'     => __( '8th', 'cmb2' ),
+		),
+	) );
 }

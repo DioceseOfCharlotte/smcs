@@ -11,7 +11,7 @@ $child_post_args = array(
     'post_author' => 1,
     'post_title' => $entry[10],
     'post_status' => 'publish',
-    'post_type' => 'family',
+    'post_type' => 'smcs_student',
 );
 
 // this returns an integer on success, 0 on failure - creates post!
@@ -19,7 +19,7 @@ $post_id = wp_insert_post( $child_post_args );
 
 // add more meta values if you need
 $child_meta_values = array(
-    'child_grade'       => $entry[13],
+    'smcs_grade'       => $entry[13],
 );
 
 // as long as wp_insert_post didnt fail...
@@ -38,7 +38,7 @@ $child_post_args = array(
     'post_author' => 1,
     'post_title' => $entry[11],
     'post_status' => 'publish',
-    'post_type' => 'family',
+    'post_type' => 'smcs_student',
 );
 
 // this returns an integer on success, 0 on failure - creates post!
@@ -46,7 +46,7 @@ $post_id = wp_insert_post( $child_post_args );
 
 // add more meta values if you need
 $child_meta_values = array(
-    'child_grade'       => $entry[14],
+    'smcs_grade'       => $entry[14],
 );
 
 // as long as wp_insert_post didnt fail...
@@ -65,7 +65,7 @@ $child_post_args = array(
     'post_author' => 1,
     'post_title' => $entry[12],
     'post_status' => 'publish',
-    'post_type' => 'family',
+    'post_type' => 'smcs_student',
 );
 
 // this returns an integer on success, 0 on failure - creates post!
@@ -73,7 +73,7 @@ $post_id = wp_insert_post( $child_post_args );
 
 // add more meta values if you need
 $child_meta_values = array(
-    'child_grade'       => $entry[15],
+    'smcs_grade'       => $entry[15],
 );
 
 // as long as wp_insert_post didnt fail...
@@ -94,7 +94,7 @@ $child_post_args = array(
     'post_author' => 1,
     'post_title' => $entry[21],
     'post_status' => 'publish',
-    'post_type' => 'family',
+    'post_type' => 'smcs_student',
 );
 
 // this returns an integer on success, 0 on failure - creates post!
@@ -102,7 +102,7 @@ $post_id = wp_insert_post( $child_post_args );
 
 // add more meta values if you need
 $child_meta_values = array(
-    'child_grade'       => $entry[21],
+    'smcs_grade'       => $entry[21],
 );
 
 // as long as wp_insert_post didnt fail...
@@ -122,7 +122,7 @@ $child_post_args = array(
     'post_author' => 1,
     'post_title' => $entry[25],
     'post_status' => 'publish',
-    'post_type' => 'family',
+    'post_type' => 'smcs_student',
 );
 
 // this returns an integer on success, 0 on failure - creates post!
@@ -130,7 +130,7 @@ $post_id = wp_insert_post( $child_post_args );
 
 // add more meta values if you need
 $child_meta_values = array(
-    'child_grade'       => $entry[26],
+    'smcs_grade'       => $entry[26],
 );
 
 // as long as wp_insert_post didnt fail...
@@ -150,7 +150,7 @@ $child_post_args = array(
     'post_author' => 1,
     'post_title' => $entry[28],
     'post_status' => 'publish',
-    'post_type' => 'family',
+    'post_type' => 'smcs_student',
 );
 
 // this returns an integer on success, 0 on failure - creates post!
@@ -158,7 +158,7 @@ $post_id = wp_insert_post( $child_post_args );
 
 // add more meta values if you need
 $child_meta_values = array(
-    'child_grade'       => $entry[29],
+    'smcs_grade'       => $entry[29],
 );
 
 // as long as wp_insert_post didnt fail...

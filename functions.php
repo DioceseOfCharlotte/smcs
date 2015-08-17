@@ -10,10 +10,9 @@ $includes_dir = trailingslashit( get_stylesheet_directory() );
 require_once $includes_dir . 'inc/user-tax.php';
 require_once $includes_dir . 'inc/post-types.php';
 require_once $includes_dir . 'inc/log-in-form.php';
-require_once $includes_dir . 'inc/forms.php';
+//require_once $includes_dir . 'inc/forms.php';
 
 add_action( 'after_setup_theme', 'smcs_theme_setup' );
-add_action( 'widgets_init', 'smcs_register_sidebars' );
 add_filter( 'user_contactmethods', 'smcs_user_contact_methods' );
 add_action( 'cmb2_init', 'smcs_register_user_profile_metabox' );
 
@@ -69,18 +68,6 @@ function smcs_user_contact_methods( $user_contact_method ) {
 
     return $user_contact_method;
 
-}
-
-
-function smcs_register_sidebars() {
-    hybrid_register_sidebar( [
-        'id'            => 'front',
-        'name'          => _x( 'Front Page Highlights', 'sidebar', 'bempress' ),
-        'before_widget' => '<section id="%1$s" class="widget widget-front %2$s u-flexed--1 u-ph u-mb@respond grid__item u-flex"><div class="u-br u-oh widget__wrap t-bg__1--dark">',
-        'after_widget'  => '</div></section>',
-        'before_title'  => '<h3 class="widget-title widget-footer__title">',
-        'after_title'   => '</h3>',
-    ] );
 }
 
 

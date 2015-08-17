@@ -27,8 +27,8 @@ ob_start();
             $post_link = get_permalink($post_id);
             ?>
         <div class="user-account absolute" title="Logged in as <?php echo $current_user->display_name; ?>">
-            <?php echo get_avatar( $current_user, 30 ); ?>
-        <p class="grid__item"><a class="btn small" href="<?php echo wp_logout_url( home_url() ); ?>">Sign Out</a></p>
+
+        <p class="grid__item"><a class="btn small" href="<?php echo wp_logout_url( get_bloginfo('url') ); ?>"><?php echo get_avatar( $current_user, 30 ); ?>Sign Out</a></p>
 
         </div>
             <?php
@@ -37,7 +37,8 @@ ob_start();
             the_user_favorites_list($user_id = null, $site_id = null, $include_links = true, $filters = null);
             }
         } else {
-    	echo wp_login_form( array( 'echo' => false ) ). '<p class="u-1/1 small mt2 inline-block"><a href="' . wp_lostpassword_url() . '" title="Lost Password">Forgot password?</a></p>';
+    	echo wp_login_form( array( 'echo' => false, 'redirect' => site_url( '/parent-home/' ) ) ). '<a class="btn small" href="' . wp_lostpassword_url() . '" title="Lost Password">Forgot password?</a><a href="/family-registration/" class="btn register-link menu-link">Register</a>';
+
         } ?>
     </div>
     <button class="material-icons js-drop-panel panel-btn"><?php echo $username ?></button>

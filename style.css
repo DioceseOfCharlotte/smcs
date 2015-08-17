@@ -12,7 +12,6 @@
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Template:    abraham
  */
-
 .svg-logo {
     width: 100%;
 }
@@ -31,6 +30,7 @@
     -ms-transform: translateY(-100%);
     transform: translateY(-100%);
 }
+
 .panel.is-visible {
     visibility: visible;
     position: relative;
@@ -46,12 +46,13 @@
     right: 0;
     width: 40px;
     height: 40px;
-    margin: .5rem;
+    margin: 0.5rem;
     border-radius: 50%;
     color: white;
     -webkit-transition: 0.2s;
     transition: 0.2s;
 }
+
 .panel-btn.is-active {
     margin-top: -50px;
     color: #0074d9;
@@ -64,20 +65,31 @@
 }
 
 .panel #loginform {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
     max-width: 800px;
     margin: 0 auto;
-        position: static;
+
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
 }
 
 .login-username {
     display: inline-block;
     width: 100%;
 }
+
 @media screen and (min-width: 52em) {
     .login-username {
         width: 40%;
+        margin-right: 5px;
     }
 }
+
 .login-username label {
     display: none;
 }
@@ -86,26 +98,38 @@
     display: inline-block;
     width: 100%;
 }
+
 @media screen and (min-width: 52em) {
     .login-password {
         width: 40%;
+        margin-right: 5px;
     }
 }
+
 .login-password label {
     display: none;
 }
 
 .login-remember {
-    display: inline-block;
-    font-size: 14px;
-    font-size: 0.875rem;
-    line-height: 1.07143;
+    font-size: 13px;
 }
+
 @media screen and (min-width: 52em) {
     .login-remember {
-        position: absolute;
+        /*position: absolute;
         bottom: 0;
-        //left: 0;
+        //left: 0;*/
+        width: 100%;
+        text-align: left;
+
+        -webkit-box-ordinal-group: 9;
+        -ms-flex-order: 8;
+        -webkit-order: 8;
+        order: 8;
+    }
+    #rememberme {
+        display: inline-block;
+        width: 15px;
     }
 }
 
@@ -114,6 +138,7 @@
     text-align: left;
     vertical-align: top;
 }
+
 @media screen and (min-width: 52em) {
     .login-submit {
         width: 14%;
@@ -147,31 +172,82 @@
     margin-left: 60px;
 }
 
-
-
 @media screen and (min-width: 52em) {
-.home .pages-highlight:first-of-type {
-    padding-top: 0;
-}
-
-
-.home .pages-highlight:first-of-type .card-block {
-    margin-top: -15vh;
-}
+    .home .pages-highlight:first-of-type {
+        padding-top: 0;
+    }
+    .home .pages-highlight:first-of-type .card-block {
+        margin-top: -15vh;
+    }
 }
 
 .thumbnail {
     width: 100%;
 }
 
-
 .post-9 .card-row > .h1 {
-	font-size: 18px;
-	text-align: left;
-	padding-left: 1rem;
-	padding-right: 1rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    font-size: 18px;
+    text-align: left;
 }
 
 .meh-slider .meh-slider__text {
-	display: none;
+    display: none;
+}
+
+.post-9 .card-row > .h1 {
+    padding-right: 1rem;
+    padding-left: 1rem;
+    font-size: 18px;
+    text-align: left;
+}
+
+.meh-slider .meh-slider__text {
+    display: none;
+}
+
+.thumbnail {
+    width: auto;
+}
+
+.flag-block {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.flag-block .block-body {
+    display: inline-block;
+    width: 100%;
+}
+
+.flag-img {
+    display: inline-block;
+    width: auto;
+}
+
+.page_item .children a {
+    display: block;
+    width: 100%;
+    padding-left: 2rem;
+    color: #555;
+    font-size: 14px;
+}
+
+.mdl-menu__outline {
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
+}
+
+.widget .menu-item {
+    display: block;
+}
+
+.panel-btn {
+    width: 48px;
+    height: 48px;
+    margin: 0.5rem;
+    background-color: rgba(0, 0, 0, 0.12);
+    font-size: 33px;
 }

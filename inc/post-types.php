@@ -1,7 +1,53 @@
 <?php
 
+add_action( 'init', 'faculty_post_type' );
 add_action( 'init', 'smcs_students_post_type' );
 add_action( 'cmb2_init', 'smcs_grade_register_metabox' );
+
+// Register Custom Post Type
+function faculty_post_type() {
+
+	$labels = array(
+		'name'                => _x( 'Faculty', 'Post Type General Name', 'smcs' ),
+		'singular_name'       => _x( 'Faculty Member', 'Post Type Singular Name', 'smcs' ),
+		'menu_name'           => __( 'Faculty', 'smcs' ),
+		'name_admin_bar'      => __( 'Faculty', 'smcs' ),
+		'parent_item_colon'   => __( 'Parent Faculty Member:', 'smcs' ),
+		'all_items'           => __( 'All Faculty', 'smcs' ),
+		'add_new_item'        => __( 'Add New Faculty Member', 'smcs' ),
+		'add_new'             => __( 'Add New', 'smcs' ),
+		'new_item'            => __( 'New Faculty Member', 'smcs' ),
+		'edit_item'           => __( 'Edit Faculty Member', 'smcs' ),
+		'update_item'         => __( 'Update Faculty Member', 'smcs' ),
+		'view_item'           => __( 'View Faculty Member', 'smcs' ),
+		'search_items'        => __( 'Search Faculty', 'smcs' ),
+		'not_found'           => __( 'Not found', 'smcs' ),
+		'not_found_in_trash'  => __( 'Not found in Trash', 'smcs' ),
+	);
+	$args = array(
+		'label'               => __( 'Faculty Member', 'smcs' ),
+		'description'         => __( 'SMCS Staff', 'smcs' ),
+		'labels'              => $labels,
+		'supports'            => array( 'title', 'author', 'thumbnail', 'revisions', 'page-attributes', ),
+		'taxonomies'          => array( 'smcs_faculty_role', 'smcs_faculty_title' ),
+		'hierarchical'        => true,
+		'public'              => true,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'menu_position'       => 5,
+		'menu_icon'           => 'dashicons-id',
+		'show_in_admin_bar'   => true,
+		'show_in_nav_menus'   => false,
+		'can_export'          => true,
+		'has_archive'         => true,
+		'exclude_from_search' => false,
+		'publicly_queryable'  => true,
+		'capability_type'     => 'page',
+	);
+	register_post_type( 'faculty', $args );
+
+}
+
 
 // Register Students Post Type
 function smcs_students_post_type() {
@@ -51,6 +97,34 @@ function smcs_students_post_type() {
 		)
 	);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 function smcs_grade_register_metabox() {

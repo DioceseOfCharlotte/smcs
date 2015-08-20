@@ -27,8 +27,18 @@ ob_start();
             $post_link = get_permalink($post_id);
             ?>
         <div class="user-account absolute" title="Logged in as <?php echo $current_user->display_name; ?>">
+            <!-- Left aligned menu below button -->
+            <button id="manage-account-lower-left" class="btn btn--default">
+              <?php echo $current_user->display_name; ?><i class="ml1 material-icons">&#xE254;</i>
+            </button>
 
-        <p class="grid__item"><a class="btn small" href="<?php echo wp_logout_url( get_bloginfo('url') ); ?>"><?php echo get_avatar( $current_user, 30 ); ?>Sign Out</a></p>
+            <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+                for="manage-account-lower-left">
+              <a class="mdl-menu__item" href="<?php echo site_url( '/update-family-profile/'); ?>"><i class="mr1 material-icons">&#xE8D3;</i>Update your profile</a>
+              <a class="mdl-menu__item" href="<?php echo wp_logout_url( get_bloginfo('url') ); ?>"><i class="mr1 material-icons">&#xE879;</i>Sign Out</a>
+            </ul>
+
+
 
         </div>
             <?php

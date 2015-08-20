@@ -2,6 +2,7 @@
 
 add_action( 'init', 'faculty_post_type' );
 add_action( 'init', 'smcs_students_post_type' );
+add_action( 'init', 'thursday_packet_post_type' );
 add_action( 'cmb2_init', 'smcs_grade_register_metabox' );
 
 // Register Custom Post Type
@@ -101,7 +102,48 @@ function smcs_students_post_type() {
 
 
 
+// Register Custom Post Type
+function thursday_packet_post_type() {
 
+	$labels = array(
+		'name'                => _x( 'Thursday Packets', 'Post Type General Name', 'smcs' ),
+		'singular_name'       => _x( 'Thursday Packet', 'Post Type Singular Name', 'smcs' ),
+		'menu_name'           => __( 'Thursday Packet', 'smcs' ),
+		'name_admin_bar'      => __( 'Thursday Packet', 'smcs' ),
+		'parent_item_colon'   => __( 'Parent Item:', 'smcs' ),
+		'all_items'           => __( 'All Items', 'smcs' ),
+		'add_new_item'        => __( 'Add New Item', 'smcs' ),
+		'add_new'             => __( 'Add New', 'smcs' ),
+		'new_item'            => __( 'New Item', 'smcs' ),
+		'edit_item'           => __( 'Edit Item', 'smcs' ),
+		'update_item'         => __( 'Update Item', 'smcs' ),
+		'view_item'           => __( 'View Item', 'smcs' ),
+		'search_items'        => __( 'Search Item', 'smcs' ),
+		'not_found'           => __( 'Not found', 'smcs' ),
+		'not_found_in_trash'  => __( 'Not found in Trash', 'smcs' ),
+	);
+	$args = array(
+		'label'               => __( 'Thursday Packet', 'smcs' ),
+		'labels'              => $labels,
+		'supports'            => array( 'title', 'editor', 'thumbnail', ),
+		'taxonomies'          => array( 'category', 'post_tag' ),
+		'hierarchical'        => false,
+		'public'              => true,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'menu_position'       => 5,
+		'menu_icon'           => 'dashicons-portfolio',
+		'show_in_admin_bar'   => true,
+		'show_in_nav_menus'   => true,
+		'can_export'          => true,
+		'has_archive'         => true,
+		'exclude_from_search' => false,
+		'publicly_queryable'  => true,
+		'capability_type'     => 'page',
+	);
+	register_post_type( 'thursday_packet', $args );
+
+}
 
 
 

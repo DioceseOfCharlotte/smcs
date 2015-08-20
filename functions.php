@@ -164,3 +164,9 @@ function bempress_meh_slider() {
     echo do_shortcode( '[slider type="slider" group="front" order="DESC" orderby="rand" limit="-1"]' );
     }
 }
+
+
+add_action( 'init', 'thursday_packet_layouts_register_meta' );
+function thursday_packet_layouts_register_meta() {
+add_post_type_support( 'thursday_packet', 'theme-layouts' );
+}

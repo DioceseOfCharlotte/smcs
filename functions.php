@@ -166,7 +166,8 @@ function bempress_meh_slider() {
 }
 
 
-add_action( 'init', 'thursday_packet_layouts_register_meta' );
-function thursday_packet_layouts_register_meta() {
+add_action( 'init', 'smcs_layouts_register_meta' );
+function smcs_layouts_register_meta() {
 add_post_type_support( 'thursday_packet', 'theme-layouts' );
+add_post_type_support( 'gravityview', 'theme-layouts' );
 }

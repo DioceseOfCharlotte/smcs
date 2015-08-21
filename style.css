@@ -22,7 +22,6 @@
     top: 0;
     left: 0;
     width: 100%;
-    background: #fff;
     text-align: center;
     -webkit-transition: 0.2s;
     transition: 0.2s;
@@ -56,12 +55,6 @@
 .panel-btn.is-active {
     margin-top: -50px;
     color: #0074d9;
-}
-
-.logged-in .panel-btn.is-active {
-    -webkit-transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
-    transform: rotate(180deg);
 }
 
 .panel #loginform {

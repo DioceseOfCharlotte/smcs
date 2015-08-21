@@ -19,11 +19,8 @@ ob_start();
 
         } ?>
     </div>
-    <!-- FAB button with ripple -->
-<button class="js-drop-panel panel-btn mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
-  <i class="material-icons">&#xE853;</i>
-</button>
-
+    
+<button class="material-icons js-drop-panel panel-btn">&#xE853;</button>
 
 <?php
     $output = ob_get_clean();

@@ -171,3 +171,24 @@ function smcs_layouts_register_meta() {
 add_post_type_support( 'thursday_packet', 'theme-layouts' );
 add_post_type_support( 'gravityview', 'theme-layouts' );
 }
+
+
+function smcs_login_logo() { ?>
+    <style type="text/css">
+        .login h1 a {
+            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/images/login-logo.png);
+            padding-bottom: 30px;
+        }
+    </style>
+<?php }
+add_action( 'login_enqueue_scripts', 'smcs_login_logo' );
+
+function smcs_login_logo_url() {
+    return home_url();
+}
+add_filter( 'login_headerurl', 'smcs_login_logo_url' );
+
+function smcs_login_logo_url_title() {
+    return 'St Mark Catholic School';
+}
+add_filter( 'login_headertitle', 'smcs_login_logo_url_title' );

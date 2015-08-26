@@ -106,22 +106,25 @@ function smcs_register_user_profile_metabox() {
 add_action( 'tha_footer_top', 'smcs_affiliates' );
 function smcs_affiliates() {
     ?>
-    <div class="grid wrap u-flex--j-sa u-flex u-flex--row u-flex--w u-flex--ai-c">
-    <div class="affiliate-img grid__item u-max--150 u-mb-">
-    <a href="http://schools.charlottediocese.net/macs/about-macs" title="Mecklenburg Area Catholic Schools">
-        <img src="http://stmarkcatholicschool.net/wp-content/uploads/sites/2/2015/06/macs_250.png" alt="MACS">
-        </a>
+    <section class="bg-gray row py3 py4@md">
+    <div class="container">
+        <div class="affiliate-img grid__item u-1/3 mb1 text-center">
+            <a href="http://schools.charlottediocese.net/macs/about-macs" title="Mecklenburg Area Catholic Schools">
+                <img src="http://stmarkcatholicschool.net/wp-content/uploads/sites/2/2015/06/macs_250.png" alt="MACS">
+            </a>
+        </div>
+        <div class="affiliate-img grid__item u-1/3 mb1 text-center">
+            <a href="http://macseducationfoundation.org" title="MACS Education Foundation">
+            <img src="http://stmarkcatholicschool.net/wp-content/uploads/sites/2/2015/06/path524.png" alt="MACS Education Foundation">
+            </a>
+        </div>
+        <div class="affiliate-img grid__item u-1/3 mb1 text-center">
+            <a href="http://www.advanc-ed.org" title="AdvancED">
+                <img src="http://stmarkcatholicschool.net/wp-content/uploads/sites/2/2015/06/adv-ed.png" alt="AdvancED">
+            </a>
+        </div>
     </div>
-    <div class="affiliate-img grid__item u-max--150 u-mb-">
-    <a href="http://macseducationfoundation.org" title="MACS Education Foundation">
-        <img src="http://stmarkcatholicschool.net/wp-content/uploads/sites/2/2015/06/path524.png" alt="MACS Education Foundation">
-    </a>
-    </div>
-    <div class="affiliate-img grid__item u-max--150 u-mb-">
-    <a href="http://www.advanc-ed.org" title="AdvancED">
-        <img src="http://stmarkcatholicschool.net/wp-content/uploads/sites/2/2015/06/adv-ed.png" alt="AdvancED">
-        </a>
-    </div>
+  </section>
     <?php
 }
 

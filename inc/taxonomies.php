@@ -1,6 +1,6 @@
 <?php
 
-add_action( 'init', 'smcs_faculty_taxonomies' );
+//add_action( 'init', 'smcs_faculty_taxonomies' );
 
 // Register Custom Taxonomy
 function smcs_faculty_taxonomies() {

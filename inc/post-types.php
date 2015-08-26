@@ -1,6 +1,6 @@
 <?php
 
-add_action( 'init', 'faculty_post_type' );
+//add_action( 'init', 'faculty_post_type' );
 add_action( 'init', 'smcs_students_post_type' );
 add_action( 'init', 'thursday_packet_post_type' );
 add_action( 'cmb2_init', 'smcs_grade_register_metabox' );

@@ -8,7 +8,7 @@
 $includes_dir = trailingslashit( get_stylesheet_directory() );
 
 require_once $includes_dir . 'inc/post-types.php';
-require_once $includes_dir . 'inc/taxonomies.php';
+//require_once $includes_dir . 'inc/taxonomies.php';
 require_once $includes_dir . 'inc/meta.php';
 require_once $includes_dir . 'inc/log-in-form.php';
 //require_once $includes_dir . 'inc/forms.php';

@@ -136,13 +136,6 @@ function bempress_meh_slider() {
 }
 
 
-add_action( 'init', 'smcs_layouts_register_meta' );
-function smcs_layouts_register_meta() {
-add_post_type_support( 'thursday_packet', 'theme-layouts' );
-add_post_type_support( 'gravityview', 'theme-layouts' );
-}
-
-
 function smcs_login_logo() { ?>
     <style type="text/css">
         .login h1 a {

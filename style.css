@@ -256,3 +256,9 @@
 .affiliate-img img {
     max-height: 90px;
 }
+
+
+
+article.thursday_packet:first-of-type {
+	width: 100%;
+}

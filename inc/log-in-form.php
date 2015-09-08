@@ -11,7 +11,7 @@ function doc_login_drop() {
 ob_start();
 ?>
 
-    <div class="panel p1 white bg-1">
+    <div class="panel white bg-1">
     <?php
         if ( is_user_logged_in() ) {
 
@@ -24,7 +24,7 @@ ob_start();
         } ?>
     </div>
 
-<button class="material-icons js-drop-panel panel-btn">&#xE853;</button>
+<button class="material-icons js-drop-panel btn--tiny panel-btn">&#xE853;</button>
 
 <?php
     $output = ob_get_clean();

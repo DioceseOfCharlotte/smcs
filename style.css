@@ -71,34 +71,21 @@
     flex-wrap: wrap;
 }
 
+.login-password,
 .login-username {
     display: inline-block;
     width: 100%;
 }
 
 @media screen and (min-width: 52em) {
+    .login-password,
     .login-username {
-        width: 40%;
+        width: auto;
         margin-right: 5px;
     }
 }
 
-.login-username label {
-    display: none;
-}
-
-.login-password {
-    display: inline-block;
-    width: 100%;
-}
-
-@media screen and (min-width: 52em) {
-    .login-password {
-        width: 40%;
-        margin-right: 5px;
-    }
-}
-
+.login-username label,
 .login-password label {
     display: none;
 }
@@ -109,11 +96,7 @@
 
 @media screen and (min-width: 52em) {
     .login-remember {
-        /*position: absolute;
-        bottom: 0;
-        //left: 0;*/
-        width: 100%;
-        text-align: left;
+        align-self: flex-end;
         -webkit-box-ordinal-group: 9;
         -ms-flex-order: 8;
         -webkit-order: 8;
@@ -128,7 +111,10 @@
 .login-submit {
     display: inline-block;
     text-align: left;
-    vertical-align: top;
+}
+
+.bg-1 .button-primary {
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 @media screen and (min-width: 52em) {
@@ -158,12 +144,14 @@
     border-radius: 50%;
 }
 
-.menu-logged-in {
-    margin-right: 60px;
-    margin-left: 60px;
-}
+
 
 @media screen and (min-width: 52em) {
+    .menu-logged-in {
+        margin-right: 60px;
+        margin-left: 60px;
+    }
+
     .home .pages-highlight:first-of-type {
         padding-top: 0;
     }
@@ -261,4 +249,36 @@
 
 article.thursday_packet:first-of-type {
 	width: 100%;
+}
+
+
+
+.athletics .day-number {
+		color: white;
+		background-color: #009587;
+		font-weight: bold;
+}
+
+.macs .day-number {
+		color: white;
+		background-color: #F34235;
+		font-weight: bold;
+}
+
+.pto .day-number {
+		color: white;
+		background-color: #6639B6;
+		font-weight: bold;
+}
+
+.school .day-number {
+		color: white;
+		background-color: #FE5621;
+		font-weight: bold;
+}
+
+.holidays .day-number {
+		color: white;
+		background-color: #2095F2;
+		font-weight: bold;
 }

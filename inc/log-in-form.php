@@ -11,20 +11,21 @@ function doc_login_drop() {
 ob_start();
 ?>
 
-    <div class="panel white bg-1">
+    <div class="panel white p2 bg-1">
     <?php
         if ( is_user_logged_in() ) {
-
+            $panel_button = esc_html__('&#xE5D2;');
             hybrid_get_menu('logged-in');
 
         } else {
+            $panel_button = esc_html__('&#xE853;');
 
     	echo wp_login_form( array( 'echo' => false, 'redirect' => site_url( '/parent-home/' ) ) ). '<a class="btn small" href="' . wp_lostpassword_url() . '" title="Lost Password">Forgot password?</a><a href="/family-registration/" class="btn register-link menu-link">Register</a>';
 
         } ?>
     </div>
 
-<button class="material-icons js-drop-panel btn--tiny panel-btn">&#xE853;</button>
+<button class="material-icons js-drop-panel currentcolor btn--tiny panel-btn"><?php echo $panel_button ?></button>
 
 <?php
     $output = ob_get_clean();

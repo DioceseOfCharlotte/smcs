@@ -8,9 +8,7 @@
 $includes_dir = trailingslashit( get_stylesheet_directory() );
 
 require_once $includes_dir . 'inc/post-types.php';
-require_once $includes_dir . 'inc/meta.php';
 require_once $includes_dir . 'inc/log-in-form.php';
-require_once $includes_dir . 'inc/gv-functions.php';
 
 add_action( 'after_setup_theme', 'smcs_theme_setup' );
 add_filter( 'user_contactmethods', 'smcs_user_contact_methods' );
@@ -59,7 +57,7 @@ function smcs_accent_color( $hex ) {
 // User Contact Methods
 function smcs_user_contact_methods( $user_contact_method ) {
 
-    $user_contact_method['doc_primary_phone'] = __( 'Phone (or extension)', 'smcs' );
+    //$user_contact_method['doc_primary_phone'] = __( 'Phone (or extension)', 'smcs' );
 
     	// Remove user contact methods
 	unset( $user_contact_method['aim']    );

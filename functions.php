@@ -7,10 +7,10 @@
 
 $includes_dir = trailingslashit( get_stylesheet_directory() );
 
-require_once $includes_dir . 'inc/user-tax.php';
+require_once $includes_dir . 'inc/post-types.php';
+require_once $includes_dir . 'inc/log-in-form.php';
 
 add_action( 'after_setup_theme', 'smcs_theme_setup' );
-add_action( 'widgets_init', 'smcs_register_sidebars' );
 add_filter( 'user_contactmethods', 'smcs_user_contact_methods' );
 add_action( 'cmb2_init', 'smcs_register_user_profile_metabox' );
 
@@ -28,7 +28,7 @@ function smcs_theme_setup() {
     add_theme_support(
         'custom-background',
         array(
-            'default-color' => 'ffffff',
+            'default-color' => 'f5f5f5',
             'default-image' => '',
         )
     );
@@ -57,8 +57,8 @@ function smcs_accent_color( $hex ) {
 // User Contact Methods
 function smcs_user_contact_methods( $user_contact_method ) {
 
-    $user_contact_method['doc_primary_phone'] = __( 'Phone (or extension)', 'smcs' );
-    
+    //$user_contact_method['doc_primary_phone'] = __( 'Phone (or extension)', 'smcs' );
+
     	// Remove user contact methods
 	unset( $user_contact_method['aim']    );
 	unset( $user_contact_method['jabber'] );
@@ -66,18 +66,6 @@ function smcs_user_contact_methods( $user_contact_method ) {
 
     return $user_contact_method;
 
-}
-
-
-function smcs_register_sidebars() {
-    hybrid_register_sidebar( [
-        'id'            => 'front',
-        'name'          => _x( 'Front Page Highlights', 'sidebar', 'bempress' ),
-        'before_widget' => '<section id="%1$s" class="widget widget-front %2$s u-flexed--1 u-ph u-mb@respond grid__item u-flex"><div class="u-br u-oh widget__wrap t-bg__1--dark">',
-        'after_widget'  => '</div></section>',
-        'before_title'  => '<h3 class="widget-title widget-footer__title">',
-        'after_title'   => '</h3>',
-    ] );
 }
 
 
@@ -103,7 +91,7 @@ function smcs_register_user_profile_metabox() {
 		'type'     => 'title',
 		'on_front' => false,
 	) );
-	
+
 	$cmb_user->add_field( array(
 		'name' => __( 'Title, Class or Grade', 'cmb2' ),
 		'id'   => $prefix . 'staff_title',
@@ -111,56 +99,57 @@ function smcs_register_user_profile_metabox() {
 	) );
 }
 
-register_taxonomy('staff_type', 'user', array(
-    'public'      =>true,
-    'single_value' => false,
-    'show_admin_column' => true,
-    'labels'      =>array(
-        'name'                        =>'Staff Types',
-        'singular_name'               =>'Staff Type',
-        'menu_name'                   =>'Staff Types',
-        'search_items'                =>'Search Staff Types',
-        'popular_items'               =>'Popular Staff Types',
-        'all_items'                   =>'All Staff Types',
-        'edit_item'                   =>'Edit Staff Type',
-        'update_item'                 =>'Update Staff Type',
-        'add_new_item'                =>'Add New Staff Type',
-        'new_item_name'               =>'New Staff Type Name',
-        'separate_items_with_commas'  =>'Separate staff types with commas',
-        'add_or_remove_items'         =>'Add or remove staff types',
-        'choose_from_most_used'       =>'Choose from the most popular staff types',
-    ),
-        'rewrite'     =>array(
-        'with_front'                  =>true,
-        'slug'                        =>'author/profession',
-    ),
-    'capabilities'    => array(
-        'manage_terms'                =>'edit_users',
-        'edit_terms'                  =>'edit_users',
-        'delete_terms'                =>'edit_users',
-        'assign_terms'                =>'read',
-    ),
-));
-
 
 add_action( 'tha_footer_top', 'smcs_affiliates' );
 function smcs_affiliates() {
     ?>
-    <div class="grid wrap u-flex--j-sa u-flex u-flex--row u-flex--w u-flex--ai-c">
-    <div class="affiliate-img grid__item u-max--150 u-mb-">
-    <a href="http://schools.charlottediocese.net/macs/about-macs" title="Mecklenburg Area Catholic Schools">
-        <img src="http://stmarkcatholicschool.net/wp-content/uploads/sites/2/2015/06/macs_250.png" alt="MACS">
-        </a>
+    <section class="bg-gray row py3 py4@md">
+    <div class="container">
+        <div class="affiliate-img grid__item u-1/3 mb1 text-center">
+            <a href="http://schools.charlottediocese.net/macs/about-macs" title="Mecklenburg Area Catholic Schools">
+                <img src="http://stmarkcatholicschool.net/wp-content/uploads/sites/2/2015/06/macs_250.png" alt="MACS">
+            </a>
+        </div>
+        <div class="affiliate-img grid__item u-1/3 mb1 text-center">
+            <a href="http://macseducationfoundation.org" title="MACS Education Foundation">
+            <img src="http://stmarkcatholicschool.net/wp-content/uploads/sites/2/2015/06/path524.png" alt="MACS Education Foundation">
+            </a>
+        </div>
+        <div class="affiliate-img grid__item u-1/3 mb1 text-center">
+            <a href="http://www.advanc-ed.org" title="AdvancED">
+                <img src="http://stmarkcatholicschool.net/wp-content/uploads/sites/2/2015/06/adv-ed.png" alt="AdvancED">
+            </a>
+        </div>
     </div>
-    <div class="affiliate-img grid__item u-max--150 u-mb-">
-    <a href="http://macseducationfoundation.org" title="MACS Education Foundation">
-        <img src="http://stmarkcatholicschool.net/wp-content/uploads/sites/2/2015/06/path524.png" alt="MACS Education Foundation">
-    </a>
-    </div>
-    <div class="affiliate-img grid__item u-max--150 u-mb-">
-    <a href="http://www.advanc-ed.org" title="AdvancED">
-        <img src="http://stmarkcatholicschool.net/wp-content/uploads/sites/2/2015/06/adv-ed.png" alt="AdvancED">
-        </a>
-    </div>
+  </section>
     <?php
 }
+
+
+add_action( 'tha_content_top', 'bempress_meh_slider');
+function bempress_meh_slider() {
+    if ( is_front_page() ) {
+    echo do_shortcode( '[slider type="slider" group="front" order="DESC" orderby="rand" limit="-1"]' );
+    }
+}
+
+
+function smcs_login_logo() { ?>
+    <style type="text/css">
+        .login h1 a {
+            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/images/login-logo.png);
+            padding-bottom: 30px;
+        }
+    </style>
+<?php }
+add_action( 'login_enqueue_scripts', 'smcs_login_logo' );
+
+function smcs_login_logo_url() {
+    return home_url();
+}
+add_filter( 'login_headerurl', 'smcs_login_logo_url' );
+
+function smcs_login_logo_url_title() {
+    return 'St Mark Catholic School';
+}
+add_filter( 'login_headertitle', 'smcs_login_logo_url_title' );

@@ -300,10 +300,26 @@ article.thursday_packet:first-of-type {
   top: 0;
 }
 
-home .bg-transparent .card-block.bg-white {
+.home .bg-transparent .card-block.bg-white {
     background-color: rgba(255, 255, 255, 0.9);
 }
 
-home .bg-transparent .card-block.bg-white .mdl-card__actions {
+.home .bg-transparent .card-block.bg-white .mdl-card__actions {
     display: none;
+}
+
+/*.home .bg-transparent.pages-highlight {
+    min-height: 70vh;
+}*/
+
+.home section.bg-2 {
+    background-color: rgba(255, 216, 112, 0.9);
+}
+
+.home footer.bg-1--light {
+    background-color: rgba(0, 96, 204, 0.9);
+}
+
+.home section.bg-gray {
+    background-color: rgba(0,0,0,.125)!important;
 }

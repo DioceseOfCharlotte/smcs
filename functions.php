@@ -136,7 +136,7 @@ function bempress_meh_slider() {
 
 function smcs_bg_video() {
     if ( is_front_page() ) {
-    echo  '<div id="background-video" class="background-video"></div>';
+    echo  '<div id="background-video" class="background-video">'. the_post_thumbnail( 'abraham-hd', array( 'class' => 'placeholder-image' ) ) .'</div>';
     }
 }
 add_action( 'tha_content_top', 'smcs_bg_video');

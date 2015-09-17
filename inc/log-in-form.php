@@ -11,7 +11,7 @@ function doc_login_drop() {
 ob_start();
 ?>
 
-    <div class="panel white p2 bg-1">
+    <div class="panel white p1 bg-1">
     <?php
         if ( is_user_logged_in() ) {
             $panel_button = esc_html__('&#xE5D2;');

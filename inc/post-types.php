@@ -60,10 +60,7 @@ function doc_classrooms_register_post_types() {
 				'editor',
 				'author',
 				'thumbnail',
-				'excerpt',
 				'revisions',
-				'page-attributes',
-                'post-formats'
 			),
 			/* Labels used when displaying the posts. */
 			'labels' => array(

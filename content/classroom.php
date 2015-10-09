@@ -1,3 +1,5 @@
+<?php if (is_singular(get_post_type())) : ?>
+
 <?php if (have_posts()) : ?>
 
     <?php while (have_posts()) : the_post(); ?>
@@ -8,14 +10,12 @@
 
         <?php tha_entry_top(); ?>
 
-        <?php if (is_singular(get_post_type())) : ?>
-
             <div <?php hybrid_attr('entry-content'); ?>>
                 <h2 <?php hybrid_attr( 'entry-published' ); ?>><?php echo get_the_date(); ?></h2>
                 <?php tha_entry_content_before(); ?>
                 <?php the_content(); ?>
                 <?php tha_entry_content_after(); ?>
-				<?php hybrid_post_terms( array( 'taxonomy' => 'classroom_grade', 'text' => __( 'Posted in %s', 'stargazer' ) ) ); ?>
+				<?php hybrid_post_terms( array( 'taxonomy' => 'classroom_grade', 'text' => __( 'Posted in %s', 'abraham' ) ) ); ?>
             </div>
 
             <footer <?php hybrid_attr('entry-footer'); ?>>
@@ -27,7 +27,33 @@
 
             <?php comments_template('', true); ?>
 
+			<?php tha_entry_bottom(); ?>
+
+		    </article>
+
+		<?php endwhile; ?>
+
+	    <?php the_posts_navigation( array(
+	    'prev_text'          => __( 'Previous page', 'abraham' ),
+	    'next_text'          => __( 'Next page', 'abraham' ),
+	) ); ?>
+
+	<?php
+endif; ?>
+
         <?php else : // If not viewing a single post. ?>
+
+			<?php if (have_posts()) : ?>
+
+<?php hybrid_post_terms( array( 'taxonomy' => 'classroom_grade', 'wrap' => '<li class="page_item">%s</li>' ) ); ?>
+
+			    <?php while (have_posts()) : the_post(); ?>
+
+			    <?php tha_entry_before(); ?>
+
+			<article <?php hybrid_attr('post'); ?>>
+
+		        <?php tha_entry_top(); ?>
 
             <header <?php hybrid_attr('entry-header'); ?>>
                 <?php
@@ -48,20 +74,14 @@
                 <?php tha_entry_content_after(); ?>
             </div>
 
-    	<?php endif; // End check for posts. ?>
+			<?php tha_entry_bottom(); ?>
 
-    <?php tha_entry_bottom(); ?>
-
-    </article>
+		    </article>
 
     <?php tha_entry_after(); ?>
 
     <?php endwhile; ?>
 
-    <?php the_posts_navigation( array(
-    'prev_text'          => __( 'Previous page', 'abraham' ),
-    'next_text'          => __( 'Next page', 'abraham' ),
-) ); ?>
-
 <?php
 endif;
+<?php endif; // End check for posts. ?>

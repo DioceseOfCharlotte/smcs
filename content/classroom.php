@@ -83,5 +83,5 @@ endif; ?>
     <?php endwhile; ?>
 
 <?php
-endif;
+endif; ?>
 <?php endif; // End check for posts. ?>

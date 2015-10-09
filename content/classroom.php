@@ -45,7 +45,7 @@ endif; ?>
 
 			<?php if (have_posts()) : ?>
 
-<?php hybrid_post_terms( array( 'taxonomy' => 'classroom_grade', 'wrap' => '<li class="page_item">%s</li>' ) ); ?>
+<?php hybrid_post_terms( array( 'taxonomy' => 'classroom_grade', 'before' => '<ul>', 'after' => '</ul>', 'wrap' => '<li %s>%s</li>' ) ); ?>
 
 			    <?php while (have_posts()) : the_post(); ?>
 

@@ -2,6 +2,7 @@
 
 add_action( 'init', 'doc_classrooms_register_post_types' );
 add_action( 'init', 'thursday_packet_post_type' );
+add_action( 'init', 'press_release_post_type' );
 
 function doc_classrooms_register_post_types() {
 	register_post_type(

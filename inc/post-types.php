@@ -136,6 +136,48 @@ function thursday_packet_post_type() {
 
 }
 
+// Register Custom Post Type
+function press_release_post_type() {
+
+	$labels = array(
+		'name'                => _x( 'Press Releases', 'Post Type General Name', 'smcs' ),
+		'singular_name'       => _x( 'Press Release', 'Post Type Singular Name', 'smcs' ),
+		'menu_name'           => __( 'Press Release', 'smcs' ),
+		'name_admin_bar'      => __( 'Press Release', 'smcs' ),
+		'parent_item_colon'   => __( 'Parent Item:', 'smcs' ),
+		'all_items'           => __( 'All Items', 'smcs' ),
+		'add_new_item'        => __( 'Add New Item', 'smcs' ),
+		'add_new'             => __( 'Add New', 'smcs' ),
+		'new_item'            => __( 'New Item', 'smcs' ),
+		'edit_item'           => __( 'Edit Item', 'smcs' ),
+		'update_item'         => __( 'Update Item', 'smcs' ),
+		'view_item'           => __( 'View Item', 'smcs' ),
+		'search_items'        => __( 'Search Item', 'smcs' ),
+		'not_found'           => __( 'Not found', 'smcs' ),
+		'not_found_in_trash'  => __( 'Not found in Trash', 'smcs' ),
+	);
+	$args = array(
+		'label'               => __( 'Press Release', 'smcs' ),
+		'labels'              => $labels,
+		'supports'            => array( 'title', 'editor', 'thumbnail', ),
+		'taxonomies'          => array( 'category', 'post_tag' ),
+		'hierarchical'        => false,
+		'public'              => true,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'menu_position'       => 5,
+		'menu_icon'           => 'dashicons-welcome-widgets-menus',
+		'show_in_admin_bar'   => true,
+		'show_in_nav_menus'   => true,
+		'can_export'          => true,
+		'has_archive'         => true,
+		'exclude_from_search' => false,
+		'publicly_queryable'  => true,
+		'capability_type'     => 'page',
+	);
+	register_post_type( 'press_release', $args );
+
+}
 
 
 

@@ -8,7 +8,10 @@
 $includes_dir = trailingslashit( get_stylesheet_directory() );
 
 require_once $includes_dir . 'inc/post-types.php';
+require_once $includes_dir . 'inc/taxonomies.php';
 require_once $includes_dir . 'inc/log-in-form.php';
+require_once $includes_dir . 'inc/shortcodes.php';
+require_once $includes_dir . 'inc/shorts-ui.php';
 
 add_action( 'after_setup_theme', 'smcs_theme_setup' );
 add_filter( 'user_contactmethods', 'smcs_user_contact_methods' );

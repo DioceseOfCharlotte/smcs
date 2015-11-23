@@ -1,102 +1,184 @@
 <?php
 
-//add_action( 'init', 'faculty_post_type' );
-//add_action( 'init', 'smcs_students_post_type' );
+add_action( 'init', 'doc_bulletins_register_post_types' );
+add_action( 'init', 'doc_classrooms_register_post_types' );
 add_action( 'init', 'thursday_packet_post_type' );
-//add_action( 'cmb2_init', 'smcs_grade_register_metabox' );
+add_action( 'init', 'press_release_post_type' );
 
-// Register Custom Post Type
-function faculty_post_type() {
-
-	$labels = array(
-		'name'                => _x( 'Faculty', 'Post Type General Name', 'smcs' ),
-		'singular_name'       => _x( 'Faculty Member', 'Post Type Singular Name', 'smcs' ),
-		'menu_name'           => __( 'Faculty', 'smcs' ),
-		'name_admin_bar'      => __( 'Faculty', 'smcs' ),
-		'parent_item_colon'   => __( 'Parent Faculty Member:', 'smcs' ),
-		'all_items'           => __( 'All Faculty', 'smcs' ),
-		'add_new_item'        => __( 'Add New Faculty Member', 'smcs' ),
-		'add_new'             => __( 'Add New', 'smcs' ),
-		'new_item'            => __( 'New Faculty Member', 'smcs' ),
-		'edit_item'           => __( 'Edit Faculty Member', 'smcs' ),
-		'update_item'         => __( 'Update Faculty Member', 'smcs' ),
-		'view_item'           => __( 'View Faculty Member', 'smcs' ),
-		'search_items'        => __( 'Search Faculty', 'smcs' ),
-		'not_found'           => __( 'Not found', 'smcs' ),
-		'not_found_in_trash'  => __( 'Not found in Trash', 'smcs' ),
-	);
-	$args = array(
-		'label'               => __( 'Faculty Member', 'smcs' ),
-		'description'         => __( 'SMCS Staff', 'smcs' ),
-		'labels'              => $labels,
-		'supports'            => array( 'title', 'author', 'thumbnail', 'revisions', 'page-attributes', ),
-		'taxonomies'          => array( 'smcs_faculty_role', 'smcs_faculty_title' ),
-		'hierarchical'        => true,
-		'public'              => true,
-		'show_ui'             => true,
-		'show_in_menu'        => true,
-		'menu_position'       => 5,
-		'menu_icon'           => 'dashicons-id',
-		'show_in_admin_bar'   => true,
-		'show_in_nav_menus'   => false,
-		'can_export'          => true,
-		'has_archive'         => true,
-		'exclude_from_search' => false,
-		'publicly_queryable'  => true,
-		'capability_type'     => 'page',
-	);
-	register_post_type( 'faculty', $args );
-
-}
-
-
-// Register Students Post Type
-function smcs_students_post_type() {
-
+function doc_bulletins_register_post_types() {
 	register_post_type(
-		'smcs_student',
+		'bulletin',
 		array(
-			'description'         => __( 'SMCS Students', 'smcs' ),
-			'hierarchical'        => false,
+			'description'         => '',
 			'public'              => true,
+			'publicly_queryable'  => true,
+			'show_in_nav_menus'   => true,
+			'show_in_admin_bar'   => true,
+			'exclude_from_search' => false,
 			'show_ui'             => true,
 			'show_in_menu'        => true,
-			'menu_position'       => 5,
-			'menu_icon'           => 'dashicons-groups',
-			'show_in_admin_bar'   => true,
-			'show_in_nav_menus'   => true,
+			'menu_position'       => 60,
+			'menu_icon'           => 'dashicons-book-alt',
 			'can_export'          => true,
-			'has_archive'         => true,
-			'exclude_from_search' => true,
-			'publicly_queryable'  => true,
-			'capability_type'     => 'post',
-
+			'delete_with_user'    => false,
+			'hierarchical'        => true,
+			'has_archive'         => 'bulletins',
+			'query_var'           => 'bulletin',
+			'capability_type'     => 'bulletin',
+			'map_meta_cap'        => true,
+			/* Capabilities. */
+			'capabilities' => array(
+				// meta caps (don't assign these to roles)
+				'edit_post'              => 'edit_bulletin',
+				'read_post'              => 'read_bulletin',
+				'delete_post'            => 'delete_bulletin',
+				// primitive/meta caps
+				'create_posts'           => 'create_bulletins',
+				// primitive caps used outside of map_meta_cap()
+				'edit_posts'             => 'edit_bulletins',
+				'edit_others_posts'      => 'manage_bulletins',
+				'publish_posts'          => 'manage_bulletins',
+				'read_private_posts'     => 'read',
+				// primitive caps used inside of map_meta_cap()
+				'read'                   => 'read',
+				'delete_posts'           => 'manage_bulletins',
+				'delete_private_posts'   => 'manage_bulletins',
+				'delete_published_posts' => 'manage_bulletins',
+				'delete_others_posts'    => 'manage_bulletins',
+				'edit_private_posts'     => 'edit_bulletins',
+				'edit_published_posts'   => 'edit_bulletins'
+			),
+			/* The rewrite handles the URL structure. */
+			'rewrite' => array(
+				'slug'       => 'bulletin-board',
+				'with_front' => false,
+				'pages'      => true,
+				'feeds'      => true,
+				'ep_mask'    => EP_PERMALINK,
+			),
+			/* What features the post type supports. */
 			'supports' => array(
 				'title',
+				'editor',
 				'author',
-				'revisions',
-				'page-attributes',
+				'thumbnail',
 			),
-
+			/* Labels used when displaying the posts. */
 			'labels' => array(
-				'name'                => __( 'Students', 'smcs' ),
-				'singular_name'       => __( 'Student', 'smcs' ),
-				'menu_name'           => __( 'Students', 'smcs' ),
-				'name_admin_bar'      => __( 'Students', 'smcs' ),
-				'parent_item_colon'   => __( 'Parent Item:', 'smcs' ),
-				'all_items'           => __( 'All Students', 'smcs' ),
-				'add_new_item'        => __( 'Add New Student', 'smcs' ),
-				'add_new'             => __( 'Add New', 'smcs' ),
-				'new_item'            => __( 'New Student', 'smcs' ),
-				'edit_item'           => __( 'Edit Student', 'smcs' ),
-				'update_item'         => __( 'Update Student', 'smcs' ),
-				'view_item'           => __( 'View Student', 'smcs' ),
-				'search_items'        => __( 'Search Students', 'smcs' ),
-				'not_found'           => __( 'Not found', 'smcs' ),
-				'not_found_in_trash'  => __( 'Not found in Trash', 'smcs' ),
+				'name'               => __( 'Bulletin Board',                   	'rcdoc' ),
+				'singular_name'      => __( 'Bulletin',                    	'rcdoc' ),
+				'menu_name'          => __( 'Bulletin Board',                   	'rcdoc' ),
+				'name_admin_bar'     => __( 'Bulletins',                    	'rcdoc' ),
+				'add_new'            => __( 'Add New',                          'rcdoc' ),
+				'add_new_item'       => __( 'Add New Bulletin',            	'rcdoc' ),
+				'edit_item'          => __( 'Edit Bulletin',               	'rcdoc' ),
+				'new_item'           => __( 'New Bulletin',                	'rcdoc' ),
+				'view_item'          => __( 'View Bulletin',               	'rcdoc' ),
+				'search_items'       => __( 'Search Bulletins',            	'rcdoc' ),
+				'not_found'          => __( 'No Bulletins found',          	'rcdoc' ),
+				'not_found_in_trash' => __( 'No Bulletins found in trash', 	'rcdoc' ),
+				'all_items'          => __( 'All Bulletins',              	    'rcdoc' ),
 			)
 		)
 	);
+	// Get the administrator role.
+	$role = get_role( 'administrator' );
+	// If the administrator role exists, add required capabilities for the plugin.
+	if ( ! empty( $role ) ) {
+		$role->add_cap( 'create_bulletins'     ); // Create new posts.
+		$role->add_cap( 'manage_bulletins'     ); // delete/publish existing posts.
+		$role->add_cap( 'edit_bulletins'       ); // Edit existing posts.
+	}
+}
+
+
+
+
+function doc_classrooms_register_post_types() {
+	register_post_type(
+		'classroom',
+		array(
+			'description'         => '',
+			'public'              => true,
+			'publicly_queryable'  => true,
+			'show_in_nav_menus'   => true,
+			'show_in_admin_bar'   => true,
+			'exclude_from_search' => false,
+			'show_ui'             => true,
+			'show_in_menu'        => true,
+			'menu_position'       => 60,
+			'menu_icon'           => 'dashicons-book-alt',
+			'can_export'          => true,
+			'delete_with_user'    => false,
+			'hierarchical'        => true,
+			'has_archive'         => 'classrooms',
+			'query_var'           => 'classroom',
+			'capability_type'     => 'classroom',
+			'map_meta_cap'        => true,
+			/* Capabilities. */
+			'capabilities' => array(
+				// meta caps (don't assign these to roles)
+				'edit_post'              => 'edit_classroom',
+				'read_post'              => 'read_classroom',
+				'delete_post'            => 'delete_classroom',
+				// primitive/meta caps
+				'create_posts'           => 'create_classrooms',
+				// primitive caps used outside of map_meta_cap()
+				'edit_posts'             => 'edit_classrooms',
+				'edit_others_posts'      => 'manage_classrooms',
+				'publish_posts'          => 'manage_classrooms',
+				'read_private_posts'     => 'read',
+				// primitive caps used inside of map_meta_cap()
+				'read'                   => 'read',
+				'delete_posts'           => 'manage_classrooms',
+				'delete_private_posts'   => 'manage_classrooms',
+				'delete_published_posts' => 'manage_classrooms',
+				'delete_others_posts'    => 'manage_classrooms',
+				'edit_private_posts'     => 'edit_classrooms',
+				'edit_published_posts'   => 'edit_classrooms'
+			),
+			/* The rewrite handles the URL structure. */
+			'rewrite' => array(
+				'slug'       => 'classrooms',
+				'with_front' => false,
+				'pages'      => true,
+				'feeds'      => true,
+				'ep_mask'    => EP_PERMALINK,
+			),
+			/* What features the post type supports. */
+			'supports' => array(
+				'title',
+				'editor',
+				'author',
+				'thumbnail',
+				'revisions',
+			),
+			/* Labels used when displaying the posts. */
+			'labels' => array(
+				'name'               => __( 'Classrooms',                   	'rcdoc' ),
+				'singular_name'      => __( 'Classroom',                    	'rcdoc' ),
+				'menu_name'          => __( 'Classrooms',                   	'rcdoc' ),
+				'name_admin_bar'     => __( 'Classrooms',                    	'rcdoc' ),
+				'add_new'            => __( 'Add New',                          'rcdoc' ),
+				'add_new_item'       => __( 'Add New Classroom',            	'rcdoc' ),
+				'edit_item'          => __( 'Edit Classroom',               	'rcdoc' ),
+				'new_item'           => __( 'New Classroom',                	'rcdoc' ),
+				'view_item'          => __( 'View Classroom',               	'rcdoc' ),
+				'search_items'       => __( 'Search Classrooms',            	'rcdoc' ),
+				'not_found'          => __( 'No Classrooms found',          	'rcdoc' ),
+				'not_found_in_trash' => __( 'No Classrooms found in trash', 	'rcdoc' ),
+				'all_items'          => __( 'All Classrooms',              	    'rcdoc' ),
+			)
+		)
+	);
+	// Get the administrator role.
+	$role = get_role( 'administrator' );
+	// If the administrator role exists, add required capabilities for the plugin.
+	if ( ! empty( $role ) ) {
+		$role->add_cap( 'create_classrooms'     ); // Create new posts.
+		$role->add_cap( 'manage_classrooms'     ); // delete/publish existing posts.
+		$role->add_cap( 'edit_classrooms'       ); // Edit existing posts.
+	}
 }
 
 
@@ -145,6 +227,48 @@ function thursday_packet_post_type() {
 
 }
 
+// Register Custom Post Type
+function press_release_post_type() {
+
+	$labels = array(
+		'name'                => _x( 'Press Releases', 'Post Type General Name', 'smcs' ),
+		'singular_name'       => _x( 'Press Release', 'Post Type Singular Name', 'smcs' ),
+		'menu_name'           => __( 'Press Release', 'smcs' ),
+		'name_admin_bar'      => __( 'Press Release', 'smcs' ),
+		'parent_item_colon'   => __( 'Parent Item:', 'smcs' ),
+		'all_items'           => __( 'All Items', 'smcs' ),
+		'add_new_item'        => __( 'Add New Item', 'smcs' ),
+		'add_new'             => __( 'Add New', 'smcs' ),
+		'new_item'            => __( 'New Item', 'smcs' ),
+		'edit_item'           => __( 'Edit Item', 'smcs' ),
+		'update_item'         => __( 'Update Item', 'smcs' ),
+		'view_item'           => __( 'View Item', 'smcs' ),
+		'search_items'        => __( 'Search Item', 'smcs' ),
+		'not_found'           => __( 'Not found', 'smcs' ),
+		'not_found_in_trash'  => __( 'Not found in Trash', 'smcs' ),
+	);
+	$args = array(
+		'label'               => __( 'Press Release', 'smcs' ),
+		'labels'              => $labels,
+		'supports'            => array( 'title', 'editor', 'thumbnail', ),
+		'taxonomies'          => array( 'category', 'post_tag' ),
+		'hierarchical'        => false,
+		'public'              => true,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'menu_position'       => 5,
+		'menu_icon'           => 'dashicons-welcome-widgets-menus',
+		'show_in_admin_bar'   => true,
+		'show_in_nav_menus'   => true,
+		'can_export'          => true,
+		'has_archive'         => true,
+		'exclude_from_search' => false,
+		'publicly_queryable'  => true,
+		'capability_type'     => 'page',
+	);
+	register_post_type( 'press_release', $args );
+
+}
 
 
 

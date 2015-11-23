@@ -3,10 +3,10 @@
  * SHORTCAKE
  * https://github.com/fusioneng/Shortcake.
  */
-add_action('init', 'smcs_add_shortcake');
+add_action('init', 'meh_add_shortcake');
 add_action( 'enqueue_shortcode_ui', 'shorts_scripts' );
 
-function smcs_add_shortcake() {
+function meh_add_shortcake() {
 
     /* Make sure the Shortcake plugin is active. */
 if (!function_exists('shortcode_ui_register_for_shortcode')) {
@@ -92,7 +92,7 @@ shortcode_ui_register_for_shortcode(
                 'label'    => 'Select Pages to Display',
                 'attr'     => 'page',
                 'type'     => 'post_select',
-                'query'    => array('post_type' => array( 'page', 'bulletin', 'sc_event' )),
+                'query'    => array('post_type' => array( 'page', 'whistle', 'attachment' )),
                 'multiple' => true,
            ),
            array(

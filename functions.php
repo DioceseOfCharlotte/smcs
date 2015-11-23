@@ -5,18 +5,19 @@
  * @license    http://www.gnu.org/licenses/gpl-2.0.html
  */
 
-$includes_dir = trailingslashit( get_stylesheet_directory() );
-
-require_once $includes_dir . 'inc/post-types.php';
-require_once $includes_dir . 'inc/taxonomies.php';
-require_once $includes_dir . 'inc/log-in-form.php';
-require_once $includes_dir . 'inc/shortcodes.php';
-require_once $includes_dir . 'inc/shorts-ui.php';
+require get_stylesheet_directory() . '/inc/html-classes.php';
+require get_stylesheet_directory() . '/inc/post-types.php';
+require get_stylesheet_directory() . '/inc/taxonomies.php';
+require get_stylesheet_directory() . '/inc/compatibility.php';
+//require get_stylesheet_directory() . '/inc/hooks.php';
+require get_stylesheet_directory() . '/inc/log-in-form.php';
+require get_stylesheet_directory() . '/inc/shortcodes.php'; // Shortcodes
+require get_stylesheet_directory() . '/inc/shorts-ui.php';  // Shortcake interface
 
 add_action( 'after_setup_theme', 'smcs_theme_setup' );
 add_filter( 'user_contactmethods', 'smcs_user_contact_methods' );
 add_action( 'cmb2_init', 'smcs_register_user_profile_metabox' );
-
+add_action( 'wp_enqueue_scripts', 'rcdoc_scripts' );
 
 /**
  * Setup function.
@@ -54,6 +55,25 @@ function smcs_secondary_color( $hex ) {
 
 function smcs_accent_color( $hex ) {
     return $hex ? $hex : 'f5f5f5';
+}
+
+
+/**
+ * Enqueue scripts and styles.
+ */
+function rcdoc_scripts() {
+
+    wp_enqueue_script(
+        'main_scripts',
+        trailingslashit(get_stylesheet_directory_uri())."assets/js/main.min.js",
+        array( 'abraham_js' ), null, true
+    );
+
+    // wp_enqueue_script(
+    //     'jq_scripts',
+    //     trailingslashit(get_stylesheet_directory_uri())."assets/js/jq-main.min.js",
+    //     array( 'jquery' ), null, true
+    // );
 }
 
 
@@ -106,19 +126,19 @@ function smcs_register_user_profile_metabox() {
 add_action( 'tha_footer_top', 'smcs_affiliates' );
 function smcs_affiliates() {
     ?>
-    <section class="bg-gray row py3 py4@md">
+    <section class="u-bg-gray row u-py3 u-py4@md">
     <div class="container">
-        <div class="affiliate-img grid__item u-1/3 mb1 text-center">
+        <div class="affiliate-img grid__item u-1/3 u-mb1 u-text-center u-inline-block">
             <a href="http://schools.charlottediocese.net/macs/about-macs" title="Mecklenburg Area Catholic Schools">
                 <img src="http://stmarkcatholicschool.net/wp-content/uploads/sites/2/2015/06/macs_250.png" alt="MACS">
             </a>
         </div>
-        <div class="affiliate-img grid__item u-1/3 mb1 text-center">
+        <div class="affiliate-img grid__item u-1/3 u-mb1 u-text-center u-inline-block">
             <a href="http://macseducationfoundation.org" title="MACS Education Foundation">
             <img src="http://stmarkcatholicschool.net/wp-content/uploads/sites/2/2015/06/path524.png" alt="MACS Education Foundation">
             </a>
         </div>
-        <div class="affiliate-img grid__item u-1/3 mb1 text-center">
+        <div class="affiliate-img grid__item u-1/3 u-mb1 u-text-center u-inline-block">
             <a href="http://www.advanc-ed.org" title="AdvancED">
                 <img src="http://stmarkcatholicschool.net/wp-content/uploads/sites/2/2015/06/adv-ed.png" alt="AdvancED">
             </a>
@@ -142,7 +162,7 @@ function smcs_bg_video() {
     echo  '<div id="background-video" class="background-video">'. the_post_thumbnail( 'abraham-hd', array( 'class' => 'placeholder-image' ) ) .'</div>';
     }
 }
-add_action( 'tha_content_top', 'smcs_bg_video');
+//add_action( 'tha_content_top', 'smcs_bg_video');
 
 // Register Script
 function meh_bg_video_scripts() {
@@ -151,7 +171,7 @@ function meh_bg_video_scripts() {
 	wp_enqueue_script( 'bg_video' );
     }
 }
-add_action( 'wp_enqueue_scripts', 'meh_bg_video_scripts' );
+//add_action( 'wp_enqueue_scripts', 'meh_bg_video_scripts' );
 
 
 function smcs_login_logo() { ?>
@@ -173,3 +193,42 @@ function smcs_login_logo_url_title() {
     return 'St Mark Catholic School';
 }
 add_filter( 'login_headertitle', 'smcs_login_logo_url_title' );
+
+
+
+
+
+
+
+
+
+/**
+ * Tell WordPress to use searchform.php from the components/ directory.
+ */
+add_filter('get_search_form','smcs_get_search_form');
+
+function smcs_get_search_form() {
+    $form = '';
+    locate_template('/components/searchform.php', true, false);
+
+    return $form;
+}
+
+
+
+add_filter( 'gform_replace_merge_tags', 'meh_reload_form_replace_merge_tag', 10, 2 );
+
+function meh_reload_form_replace_merge_tag($text, $form) {
+
+    preg_match_all('/{(reload_form):?([\s\w.,!?\'"]*)}/mi', $text, $matches, PREG_SET_ORDER);
+
+    if(empty($matches))
+        return $text;
+
+    $link_text = rgar($matches[0], 2) ? rgar($matches[0], 2) : 'Reload Form';
+    $reload_link = '<a href="" class="btn btn--default button--colored gws-reload-form">' . $link_text . ' <i class="material-icons">&#xE147;</i></a>';
+    $text = str_replace(rgar($matches[0], 0), $reload_link, $text);
+
+    return $text;
+
+}

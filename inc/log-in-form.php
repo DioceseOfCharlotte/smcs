@@ -11,7 +11,7 @@ function doc_login_drop() {
 ob_start();
 ?>
 
-    <div class="panel white p1 bg-1">
+    <div class="panel u-text-white u-bg-1">
     <?php
         if ( is_user_logged_in() ) {
             $panel_button = esc_html__('&#xE5D2;');
@@ -25,7 +25,7 @@ ob_start();
         } ?>
     </div>
 
-<button class="material-icons js-drop-panel currentcolor btn--tiny panel-btn"><?php echo $panel_button ?></button>
+<button class="material-icons js-dropdown js-drop-before currentcolor btn--tiny panel-btn"><?php echo $panel_button ?></button>
 
 <?php
     $output = ob_get_clean();

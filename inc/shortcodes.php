@@ -1,14 +1,14 @@
 <?php
-add_action('init', 'smcs_add_shortcodes');
+add_action('init', 'meh_add_shortcodes');
 
-function smcs_add_shortcodes() {
-    add_shortcode('meh_row', 'smcs_row_shortcode');
+function meh_add_shortcodes() {
+    add_shortcode('meh_row', 'meh_row_shortcode');
 }
 
 /**
 * TABS
 */
-function smcs_row_shortcode($attr, $content = null) {
+function meh_row_shortcode($attr, $content = null) {
     $attr = shortcode_atts(array(
         'row_type'      => '',
         'row_color'     => '',
@@ -25,7 +25,7 @@ function smcs_row_shortcode($attr, $content = null) {
     $pages = $attr['page'];
 
         $args = array(
-            'post_type' => array( 'page', 'bulletin', 'sc_event' ),
+            'post_type' => array( 'page', 'whistle', 'attachment' ),
             'post__in'  => explode(',', $pages),
             'orderby'   => 'post__in',
         );

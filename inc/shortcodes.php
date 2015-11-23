@@ -1,14 +1,14 @@
 <?php
 add_action('init', 'smcs_add_shortcodes');
 
-function meh_add_shortcodes() {
+function smcs_add_shortcodes() {
     add_shortcode('meh_row', 'smcs_row_shortcode');
 }
 
 /**
 * TABS
 */
-function meh_row_shortcode($attr, $content = null) {
+function smcs_row_shortcode($attr, $content = null) {
     $attr = shortcode_atts(array(
         'row_type'      => '',
         'row_color'     => '',

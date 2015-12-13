@@ -137,21 +137,21 @@ function bempress_meh_slider() {
 }
 
 
-function smcs_bg_video() {
-    if ( is_front_page() ) {
-    echo  '<div id="background-video" class="background-video">'. the_post_thumbnail( 'abraham-hd', array( 'class' => 'placeholder-image' ) ) .'</div>';
-    }
-}
-add_action( 'tha_content_top', 'smcs_bg_video');
-
-// Register Script
-function meh_bg_video_scripts() {
-    if ( is_front_page() ) {
-	wp_register_script( 'bg_video', trailingslashit( get_stylesheet_directory_uri() ) . 'src/jquery.youtubebackground.js', array( 'jquery' ), '1.0.1', true );
-	wp_enqueue_script( 'bg_video' );
-    }
-}
-add_action( 'wp_enqueue_scripts', 'meh_bg_video_scripts' );
+// function smcs_bg_video() {
+//     if ( is_front_page() ) {
+//     echo  '<div id="background-video" class="background-video">'. the_post_thumbnail( 'abraham-hd', array( 'class' => 'placeholder-image' ) ) .'</div>';
+//     }
+// }
+// add_action( 'tha_content_top', 'smcs_bg_video');
+//
+// // Register Script
+// function meh_bg_video_scripts() {
+//     if ( is_front_page() ) {
+// 	wp_register_script( 'bg_video', trailingslashit( get_stylesheet_directory_uri() ) . 'src/jquery.youtubebackground.js', array( 'jquery' ), '1.0.1', true );
+// 	wp_enqueue_script( 'bg_video' );
+//     }
+// }
+// add_action( 'wp_enqueue_scripts', 'meh_bg_video_scripts' );
 
 
 function smcs_login_logo() { ?>
